@@ -59,7 +59,7 @@ require 'secciones/tablaTickets.php';
 				<a href="formNuevoticket?usr=<?=$usr?>" class="btn btn-app bg-green"><span class="fa fa-plus"></span>Nuevo Ticket</a>
 				
 				
-				   <div class="col-xs-12">
+				   
                    <?
                          if ($msg != '')
                          {
@@ -94,7 +94,7 @@ require 'secciones/tablaTickets.php';
           <!-- /.box -->
 
           
-        </div>
+        
 			</section>
 			
 			

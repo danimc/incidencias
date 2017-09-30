@@ -120,11 +120,8 @@ function tablaAdmon()
 
    <!-- 
  -->
-          </form>
-        </div>
-      </div>
       
-    </div>
+     
               <?
 }
 
