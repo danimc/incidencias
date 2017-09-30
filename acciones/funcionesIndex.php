@@ -75,4 +75,57 @@ $qry = mysql_query("SELECT
     return $datos;		
 }
 
+function grafica_estatus()
+{
+	$conta = 0;
+	$abierto = 0;
+	$asignado = 0;
+	$proceso = 0;
+	$resuelto = 0;
+	$cerrado = 0;
+	$pendiente = 0;
+	$qry = mysql_query("SELECT
+		estatus
+		FROM ticket") or die(mysql_error());
+
+		while ($esta = mysql_fetch_array($qry)) 
+		{
+			if($esta[0] == 1)
+			{
+				$abierto++;
+			}
+			if($esta[0] == 2)
+			{
+				$asignado++;
+			}
+			if($esta[0] == 3)
+			{
+				$proceso++;
+			}
+			if($esta[0] == 4)
+			{
+				$resuelto++;
+			}
+			if($esta[0] == 5)
+			{
+				$cerrado++;
+			}
+			if($esta[0] == 6)
+			{
+				$pendiente++;
+			}
+
+				 $conta++;
+		}
+
+
+		 $datos['abierto'] 		= ($abierto / $conta) * 100;
+	 	 $datos['asignado'] 	= ($asignado / $conta) * 100;
+	 	 $datos['proceso'] 		= ($proceso / $conta) * 100;
+	 	 $datos['resuelto'] 	= ($resuelto / $conta) * 100;
+	 	 $datos['cerrado'] 		= ($cerrado / $conta) * 100;
+	 	 $datos['pendiente'] 	= ($pendiente / $conta) * 100;
+	 	 $datos['conta']		= $conta;
+	 	 return $datos;
+}
 ?>

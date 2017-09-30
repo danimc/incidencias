@@ -139,7 +139,9 @@ require 'acciones/funcionesIndex.php';
                     </div><!-- /.info-box -->
                  </div>
                  </a>
-
+<?
+ $data = grafica_estatus();
+?>
 
      
                 <div class="col-md-7 col-sm-6 col-xs-12">
@@ -150,27 +152,39 @@ require 'acciones/funcionesIndex.php';
             <!-- /.box-header -->
 
             <div class="box-body">
-               Tickets abiertos:
-              <div class="progress">
-                <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                  <span class="sr-only">40% Complete (success)</span>
+               Tickets abiertos: 
+              <div class="progress" data-toggle="tooltip"  title="<?=$data['abierto']?>% de <?=$data['conta']?> Tickets">
+                <div class="progress-bar progress-bar-navy" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?=$data['abierto']?>%">
+                  <span class="sr-only"> <?=$data['abierto']?> (success)</span>
                 </div>
               </div>
               Tickets con Asignación:
-              <div class="progress">
-                <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                  <span class="sr-only">20% Complete</span>
+              <div class="progress" data-toggle="tooltip"  title="<?=$data['asignado']?>% de <?=$data['conta']?> Tickets">
+                <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['asignado']?>%">
+                  <span class="sr-only"> <?=$data['asignado']?>% Complete</span>
                 </div>
               </div>
-              Tickets siendo resuletos:
-              <div class="progress">
-                <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+              Tickets En Proceso:
+              <div class="progress" data-toggle="tooltip"  title="<?=$data['proceso']?>% de <?=$data['conta']?> Tickets">
+                <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['proceso']?>%">
                   <span class="sr-only">60% Complete (warning)</span>
                 </div>
               </div>
               Tickets Resueltos
-              <div class="progress">
-                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+              <div class="progress" data-toggle="tooltip"  title="<?=$data['resuelto']?>% de <?=$data['conta']?> Tickets">
+                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['resuelto']?>%">
+                  <span class="sr-only">80% Complete</span>
+                </div>
+              </div>
+               Tickets Cerrados
+              <div class="progress" data-toggle="tooltip"  title="<?=$data['cerrado']?>% de <?=$data['conta']?> Tickets">
+                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['cerrado']?>%">
+                  <span class="sr-only">80% Complete</span>
+                </div>
+              </div>
+              Tickets Pendientes
+              <div class="progress" data-toggle="tooltip"  title="<?=$data['pendiente']?>% de <?=$data['conta']?> Tickets">
+                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['pendiente']?>%">
                   <span class="sr-only">80% Complete</span>
                 </div>
               </div>
@@ -178,6 +192,8 @@ require 'acciones/funcionesIndex.php';
           </div>
           <!-- /.box -->
         </div></div>
+
+          <!-- Grafica de Pay -->
              <div class="col-md-5 col-sm-12 col-xs-12">    
               <div class="box box-danger ">
             <div class="box-header with-border">
@@ -189,6 +205,8 @@ require 'acciones/funcionesIndex.php';
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
+
+
             <div class="box-body">
               <canvas id="pieChart" style="height:250px"></canvas>
             </div>
@@ -232,14 +250,12 @@ require 'acciones/funcionesIndex.php';
         <script src="bootstrap/js/app.min.js"></script>
 
         <script src="plugins/chartjs/chart.js"></script>
-<?
- $data = grafica_categorias();
 
- echo "hola" . $data['correo'];
- ?>
         <script>
 
-
+<?
+ $data = grafica_categorias();
+?>
   $(function () {
  
     var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
