@@ -10,6 +10,7 @@ function grafica_categorias()
 	$documentos = 0;
 	$telefonia = 0;
 	$impresora = 0;
+	$incidencias = 0;
 	$otro = 0;
 
 $qry = mysql_query("SELECT
@@ -52,6 +53,10 @@ $qry = mysql_query("SELECT
 			}
 			if($cat[0] == 9)
 			{
+				$incidencias++;
+			}
+			if($cat[0] == 10)
+			{
 				$otro++;
 			}
 		}
@@ -64,6 +69,7 @@ $qry = mysql_query("SELECT
     $datos['documentos'] = $documentos;
     $datos['telefonia'] = $telefonia;
     $datos['impresora'] = $impresora;
+    $datos['incidencias'] = $incidencias;
     $datos['otro'] = $otro;
 
     return $datos;		

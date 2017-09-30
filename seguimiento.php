@@ -52,7 +52,7 @@
                 <!-- Main content -->
                 <section class="content">
                    <a href="/oag/menuTickets" class="btn btn-app bg-blue"><i class="fa fa-arrow-left"></i>Regresar</a>
-        <a href="#>" data-toggle="modal" data-target="#cerrar" class="btn btn-app bg-red"><span class="fa fa-lock"></span>Cerrar Ticket</a>
+        <a href="#" data-toggle="modal" data-target="#cerrar" class="btn btn-app bg-red"><span class="fa fa-lock"></span>Cerrar Ticket</a>
                   <div class="row">
                   <div class="col-md-12">
                         <?

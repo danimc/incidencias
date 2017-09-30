@@ -295,6 +295,12 @@ require 'acciones/funcionesIndex.php';
         label: "Hardware"
       },
          {
+        value: <?=$data['incidencias']?>,
+        color: "#4c8dbc",
+        highlight: "#3c8dbc",
+        label: "Sistema de incidencias"
+      },
+       {
         value: <?=$data['otro']?>,
         color: "#4c8dbc",
         highlight: "#3c8dbc",

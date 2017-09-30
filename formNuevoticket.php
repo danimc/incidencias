@@ -65,7 +65,7 @@ head();
                                         </div>
 
                                         <div class="form-group col-md-12" >
-                                            <select class="form-control " id="usrIncidente" name="usrIncidente" >
+                                            <select class="form-control selectpicker" id="usrIncidente" data-live-search="true" name="usrIncidente" >
                                                 <option value="<?=$id?>" ><?=$username?></option>
                                                 <? 
 obtUsuarios();
