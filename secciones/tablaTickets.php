@@ -91,7 +91,8 @@ function tablaAdmon()
                   <td ><?=$ticket[0];?></td>
                   <td  title="<?=$ticket[1] . ' ' . $ticket[2];?>"><?=$ticket[1];?></td>
                   <td data-toggle="tooltip"  title="Estatus: <?=$ticket[6]?>  Asignado a: <?=$ticket[9]?>">
-                   <sup>Progreso: <?=$progreso?>%</sup>
+                  <h6 style="display: none;"><?=$ticket[9]?></h6>
+                  <sup>Progreso: <?=$progreso?>%</sup>
                    <?=$div?>
                   </td>
                   <td ><?=$ticket[3];?></td>
