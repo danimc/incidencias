@@ -4,6 +4,12 @@ require 'acciones/conexion.php';
 require 'secciones/head.php';
 require 'secciones/tablaTickets.php';
 //include ('acciones/cuentaTickets.php');
+$asignado = '';
+
+if (isset($_GET['asignado']))
+ {
+  $asignado = $_GET['asignado'];
+}
 
 
 ?>
@@ -33,9 +39,8 @@ require 'secciones/tablaTickets.php';
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <?
-        if(isset($_SESSION['estado']) == 'Autenticado'){
-			
-			head();
+        if(isset($_SESSION['estado']) == 'Autenticado'){			
+			   head();
 		?>
        
      
@@ -57,9 +62,7 @@ require 'secciones/tablaTickets.php';
             <section class="content">
                 <a href="/oag" class="btn btn-app bg-blue"><i class="fa fa-arrow-left"></i>Regresar</a>
 				<a href="formNuevoticket?usr=<?=$usr?>" class="btn btn-app bg-green"><span class="fa fa-plus"></span>Nuevo Ticket</a>
-				
-				
-				   
+        <a href="menuTickets?asignado=true" class="btn btn-app bg-orange"><span class="fa fa-search"></span>Mis Asignados</a>			   
                    <?
                          if ($msg != '')
                          {
@@ -79,7 +82,14 @@ require 'secciones/tablaTickets.php';
 <?
               if($_SESSION['rol'] == 1)
               {
-                tablaAdmon();  
+                if ($asignado == 'true')
+                {
+                  tablaAdmon_filtrado($usr); 
+                }
+                else
+                {
+                  tablaAdmon();  
+                }
               }
               else
               {
