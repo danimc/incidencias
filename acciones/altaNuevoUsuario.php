@@ -56,7 +56,7 @@ echo "Ha ocurrido un error, trate de nuevo!";
         echo "El registro se a guardado con exito <br> ";
         echo "se redireccionara automaticamente a la pagina anterior en 3 segs.";
         echo" o de Click <a href='../menuUsuarios'>aqui</a>";
-       // header('location: ../menuUsuarios');
+        header('location: ../menuUsuarios');
        
     }
 

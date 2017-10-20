@@ -8,10 +8,10 @@ clas.clasificacion,
 ac.marca,
 ac.modelo,
 ac.descripcion,
-situacion_activos.situacion
+estado_activo.estado
 FROM crm.activos ac
 LEFT JOIN clasificacion_activos clas ON clas.id_clasificacion = ac.clasificacion
-LEFT JOIN situacion_activos ON situacion_activos.id_situacion = ac.situacion ;') or die (mysql_error());
+LEFT JOIN estado_activo ON estado_activo.id = ac.situacion ;') or die (mysql_error());
 
 
 ?>

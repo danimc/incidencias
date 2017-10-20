@@ -71,7 +71,7 @@ include ('acciones/consultaActivos.php');
                   <th>Categoria</th>
                   <th>marca</th>
                   <th>modelo</th>
-                  <th>Estatus</th>
+                  <th>Descripción</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -79,7 +79,7 @@ include ('acciones/consultaActivos.php');
 
                    <? while($datos = mysql_fetch_array($sql))
                    { 
-                        if($datos['situacion'] == 1)
+                        if($datos['estado'] == 'activo')
                         {
                             $bg_status = 'success';
                         } 
@@ -94,7 +94,7 @@ include ('acciones/consultaActivos.php');
                   <td><?= $datos[2] ?></td>
                   <td><?= $datos[3] ?></td>
                   <td><?= $datos[4] ?></td>
-          <td>Activo</td>
+                  <td><?= $datos[5] ?></td>
                   <td><a class="btn btn-info" href="#" title="Editar usuario"><i class="fa fa-pencil"></i></a> <a class="btn btn-danger" href="#" title="Cambiar estatus del usuario"><i class="fa fa-close"></i></a> </td>
                 </tr>
                 <?}?>

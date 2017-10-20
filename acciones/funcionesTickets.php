@@ -165,12 +165,12 @@ $mensaje = '
   <p class="title">BUEN DIA <b> '. $usuario .' </b> Se ha registrado el incidente a su nombre con el folio: <b>'.$id.'  </p>
 <table class="table" style="bgcolor:blue">
   <tr>
-  <td>descripcion: <b> '.$descripcion.'</b></td>
+  <td>descripcion: <b> '.$titulo.'</b></td>
   </tr>
   <tr>
 <td>
   <p>Para darle seguimiento a este incidente entre a su cuenta en IncidenciasOAG y valla 
-  al menu "MIS TICKETS ACTIVOS" o de click en el siguiente enlace para ser redireccionado directamente al seguimeinto del mismo.</p>
+  al menu "MIS TICKETS ACTIVOS" o de click en el siguiente enlace para ser redireccionado directamente al seguimeinto del mismo.</p> <a class="btn" href="http://148.202.169.236/oag/seguimiento?folio='.$id.'"> >Revisar Ticket</a>
 </td>
   </tr>
   </table>
