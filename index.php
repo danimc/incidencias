@@ -3,6 +3,7 @@
 require 'acciones/conexion.php';
 require 'secciones/head.php';
 require 'acciones/funcionesIndex.php';
+require 'secciones/inicio.php';
 
 //include ('acciones/cuentaTickets.php');
 ?>
@@ -140,61 +141,15 @@ require 'acciones/funcionesIndex.php';
                  </div>
                  </a>
 <?
- $data = grafica_estatus();
+ tablaAdmon_filtrado($usr)
 ?>
 
      
-                <div class="col-md-7 col-sm-6 col-xs-12">
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Estado de Los Tickets</h3>
-            </div>
-            <!-- /.box-header -->
-
-            <div class="box-body">
-               Tickets abiertos: 
-              <div class="progress" data-toggle="tooltip"  title="<?=$data['abierto']?>% de <?=$data['conta']?> Tickets">
-                <div class="progress-bar progress-bar-navy" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?=$data['abierto']?>%">
-                  <span class="sr-only"> <?=$data['abierto']?> (success)</span>
-                </div>
-              </div>
-              Tickets con Asignación:
-              <div class="progress" data-toggle="tooltip"  title="<?=$data['asignado']?>% de <?=$data['conta']?> Tickets">
-                <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['asignado']?>%">
-                  <span class="sr-only"> <?=$data['asignado']?>% Complete</span>
-                </div>
-              </div>
-              Tickets En Proceso:
-              <div class="progress" data-toggle="tooltip"  title="<?=$data['proceso']?>% de <?=$data['conta']?> Tickets">
-                <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['proceso']?>%">
-                  <span class="sr-only">60% Complete (warning)</span>
-                </div>
-              </div>
-              Tickets Resueltos
-              <div class="progress" data-toggle="tooltip"  title="<?=$data['resuelto']?>% de <?=$data['conta']?> Tickets">
-                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['resuelto']?>%">
-                  <span class="sr-only">80% Complete</span>
-                </div>
-              </div>
-               Tickets Cerrados
-              <div class="progress" data-toggle="tooltip"  title="<?=$data['cerrado']?>% de <?=$data['conta']?> Tickets">
-                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['cerrado']?>%">
-                  <span class="sr-only">80% Complete</span>
-                </div>
-              </div>
-              Tickets Pendientes
-              <div class="progress" data-toggle="tooltip"  title="<?=$data['pendiente']?>% de <?=$data['conta']?> Tickets">
-                <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:  <?=$data['pendiente']?>%">
-                  <span class="sr-only">80% Complete</span>
-                </div>
-              </div>
-                    <!-- /.box-body -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
           </div>
-          <!-- /.box -->
-        </div></div>
 
           <!-- Grafica de Pay -->
-             <div class="col-md-5 col-sm-12 col-xs-12">    
+             <div class="col-md-6 col-sm-12 col-xs-12">    
               <div class="box box-danger ">
             <div class="box-header with-border">
               <h3 class="box-title">Incidentes por Categoria</h3>
@@ -208,7 +163,25 @@ require 'acciones/funcionesIndex.php';
 
 
             <div class="box-body">
+              
+              <div class="col-md-8 col-sm-12 col-xs-12">
               <canvas id="pieChart" style="height:250px"></canvas>
+              </div>
+              <div class="col-md-4 col-sm-12 col-xs-12">
+                <ul class="chart-legend clearfix">
+              <li><i class="fa fa-circle-o" style="color:#DF0101"></i> Correo</li>
+              <li><i class="fa fa-circle-o" style="color: #DF7401"></i> Bases de Datos</li>
+              <li><i class="fa fa-circle-o" style="color: #D7DF01"></i> Software</li>
+              <li><i class="fa fa-circle-o" style="color: #74DF00"></i> Redes E internet</li>
+              <li><i class="fa fa-circle-o" style="color: #01DF01"></i> Documentos Y Ofimatica</li>
+              <li><i class="fa fa-circle-o" style="color: #01DF74"></i> Telefonía</li>
+              <li><i class="fa fa-circle-o" style="color: #01DFD7"></i> Impresoras</li>
+              <li><i class="fa fa-circle-o" style="color: #0174DF"></i> Hardware</li>
+              <li><i class="fa fa-circle-o" style="color: #3c8dbc"></i> Sistema de Incidencias</li>
+              <li><i class="fa fa-circle-o" style="color: #6E6E6E"></i> Otro...</li>
+                </ul>
+              </div>
+            
             </div>
             <!-- /.box-body -->
           </div>
@@ -218,7 +191,11 @@ require 'acciones/funcionesIndex.php';
 
                  <?
                  }
-                 ?>   
+                 ?> 
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>  
                     </section>
                     <?php }
                     else{
@@ -263,63 +240,63 @@ require 'acciones/funcionesIndex.php';
     var PieData = [
       {
         value: <?=$data['correo']?>,
-        color: "#f56954",
-        highlight: "#f56914",
+        color: "#DF0101",
+        highlight: "#F78181",
         label: "Correos"
       },
       {
         value: <?=$data['bd']?>,
-        color: "#00a65a",
-        highlight: "#0ba65a",
+        color: "#DF7401",
+        highlight: "#F7BE81",
         label: "Bases de Datos"
       },
      
       {
         value: <?=$data['software']?>,
-        color: "#00c0ef",
-        highlight: "#b0c0ef",
+        color: "#D7DF01",
+        highlight: "#F3F781",
         label: "Software"
       },
       {
         value: <?=$data['red']?>,
-        color: "#3c8dbc",
-        highlight: "#3b8dbc",
+        color: "#74DF00",
+        highlight: "#BEF781",
         label: "Red e Internet"
       },
       {
         value: <?=$data['documentos']?>,
-        color: "#d2d6de",
-        highlight: "#00d6de",
+        color: "#01DF01",
+        highlight: "#81F781",
         label: "Documentos y Ofimatica"
       },
          {
         value: <?=$data['telefonia']?>,
-        color: "#338dbc",
-        highlight: "#3c8dbc",
+        color: "#01DF74",
+        highlight: "#81F7BE",
         label: "Telefonia"
       },
          {
         value: <?=$data['impresora']?>,
-        color: "#3d8dbc",
-        highlight: "#3c8dbc",
+        color: "#01DFD7",
+        highlight: "#81F7F3",
         label: "Impresoras"
       },
        {
         value: <?=$data['hardware']?>,
-        color: "#f39c12",
-        highlight: "#f30c12",
+        color: "#0174DF",
+        highlight: "#81BEF7",
         label: "Hardware"
       },
          {
         value: <?=$data['incidencias']?>,
-        color: "#4c8dbc",
-        highlight: "#3c8dbc",
+        color: "#7401DF",
+        highlight: "#8181F7",
         label: "Sistema de incidencias"
       },
        {
         value: <?=$data['otro']?>,
-        color: "#4c8dbc",
-        highlight: "#3c8dbc",
+        color: "#6E6E6E",
+        highlight: "#E6E6E6",
         label: "Otros..."
       }
     ];
