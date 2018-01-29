@@ -2,9 +2,9 @@
 // require 'acciones/conexion.php';
 require 'secciones/head.php';
 require 'acciones/funcionesTickets.php';
-require 'secciones/seguimiento.php'
+require 'secciones/seguimiento.php';
 
-
+$dato = infoTicket(); // pasa el valor de la variable de consulta 
 
 ?>
 
@@ -52,11 +52,17 @@ require 'secciones/seguimiento.php'
         <!-- Main content -->
         <section class="content">
           <a href="/oag/menuTickets" class="btn btn-app bg-blue"><i class="fa fa-arrow-left"></i>Regresar</a>
-          <a href="#" data-toggle="modal" data-target="#cerrar" class="btn btn-app bg-red"><span class="fa fa-lock"></span>Cerrar Ticket</a>
+          <? if ($dato[10] != 'Cerrado' ) 
+          {
+            ?>
+            <a href="#" data-toggle="modal" data-target="#cerrar" class="btn btn-app bg-red"><span class="fa fa-lock"></span>Cerrar Ticket</a>
+          <?
+          }
+          ?>
           <div class="row">
             <div class="col-md-12">
               <?
-    $dato = infoTicket(); // pasa el valor de la variable de consulta 
+  
 
     if($_SESSION['rol'] == 1)
     {

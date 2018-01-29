@@ -201,7 +201,7 @@ function email_altaTicket($id,$usuarioIncidente,$titulo,$descripcion,$Fecha,$Hor
 //empezamos a mandar el correo
 
   // Varios destinatarios
-$para  = $emailUsr;// . ', '; // atención a la coma
+$para  = $emailUsr . ',incidenciasoag@gmail.com';// . ', '; // atención a la coma
 
 
 // título
